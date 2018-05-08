@@ -27,6 +27,75 @@ class API extends REST_Controller{
         }
     }
 
+    public function Comment_get(){
+        $result['comment'] = $this->Recipe_Model->Get_All_Comment();
+        if($result){
+            $this->response($result, 200);
+        } 
+        else{
+
+            $this->response("No record found", 404);
+
+        }
+
+    }
+
+    public function CommentRes_get(){
+        $result['comment'] = $this->Recipe_Model->Get_All_Res();
+        if($result){
+            $this->response($result, 200);
+        } 
+        else{
+
+            $this->response("No record found", 404);
+
+        }
+
+    }
+
+    public function CommentAtt_get(){
+        $result['comment'] = $this->Recipe_Model->Get_All_Att();
+        if($result){
+            $this->response($result, 200);
+        } 
+        else{
+
+            $this->response("No record found", 404);
+
+        }
+
+    }
+    public function addCommentHotel_post(){
+        $name = $this->input->post('name');
+        $comment = $this->input->post('comment');
+        if(!$name || !$comment){
+            $this->response("Enter complete book information to save", 400);
+            //redirect('Barry/Coppy','refresh');
+        }else{
+            $data = array(
+                'Com_name' => $this->input->post('name'),
+                'Com_detail' => $this->input->post('comment')
+            );
+            $result = $this->Recipe_Model->Insert_Comment_Hotel($data);
+            if($result === 0){
+                $this->response("Book information coild not be saved. Try again.", 404);
+            }else{
+                //$this->response("success", 200);
+                redirect('Barry/Coppy','refresh');
+            }
+        }    
+    }
+
+    public function addCommentAtt_post(){
+
+
+    }
+
+    public function addCommentRes_post(){
+
+
+    }
+
 
 
     function bookByIsbn_get(){
@@ -50,14 +119,14 @@ class API extends REST_Controller{
         } 
         else{
 
-           $this->response("Invalid ISBN", 404);
+         $this->response("Invalid ISBN", 404);
 
-           exit;
-       }
-   } 
+         exit;
+     }
+ } 
 
     //API -  Fetch All books
-   function books_get(){
+ function books_get(){
 
     $result = $this->Book_model->getallbooks();
 
@@ -76,21 +145,21 @@ class API extends REST_Controller{
 
     //API - create a new book item in database.
 function addBook_post(){
-   $name      = $this->post('name');
+ $name      = $this->post('name');
 
-   $price     = $this->post('price');
+ $price     = $this->post('price');
 
-   $author    = $this->post('author');
+ $author    = $this->post('author');
 
-   $category  = $this->post('category');
+ $category  = $this->post('category');
 
-   $language  = $this->post('language');
+ $language  = $this->post('language');
 
-   $isbn      = $this->post('isbn');
+ $isbn      = $this->post('isbn');
 
-   $pub_date  = $this->post('publish_date');
+ $pub_date  = $this->post('publish_date');
 
-   if(!$name || !$price || !$author || !$price || !$isbn || !$category){
+ if(!$name || !$price || !$author || !$price || !$isbn || !$category){
 
     $this->response("Enter complete book information to save", 400);
 
@@ -116,23 +185,23 @@ function addBook_post(){
     //API - update a book 
 function updateBook_put(){
 
-   $name      = $this->put('name');
+ $name      = $this->put('name');
 
-   $price     = $this->put('price');
+ $price     = $this->put('price');
 
-   $author    = $this->put('author');
+ $author    = $this->put('author');
 
-   $category  = $this->put('category');
+ $category  = $this->put('category');
 
-   $language  = $this->put('language');
+ $language  = $this->put('language');
 
-   $isbn      = $this->put('isbn');
+ $isbn      = $this->put('isbn');
 
-   $pub_date  = $this->put('publish_date');
+ $pub_date  = $this->put('publish_date');
 
-   $id        = $this->put('id');
+ $id        = $this->put('id');
 
-   if(!$name || !$price || !$author || !$price || !$isbn || !$category){
+ if(!$name || !$price || !$author || !$price || !$isbn || !$category){
 
     $this->response("Enter complete book information to save", 400);
 

@@ -7,7 +7,9 @@ class Barry extends CI_Controller {
 		$this->load->view('Homepage');
 	}
 	public function Coppy(){
-		$this->load->view('Hotel_View');
+		$this->load->model('Recipe_Model');
+		$data['comment'] = $this->Recipe_Model->Get_All_Comment();
+		$this->load->view('Hotel_View',$data);
 	}
 	public function Restaurant_View(){
 		$this->load->view('Res_View');
@@ -45,5 +47,8 @@ class Barry extends CI_Controller {
 	}
 	public function Recipe2(){
 		$this->load->view('Recipe_View');
+	}
+	public function Insert_Comment(){
+
 	}
 }

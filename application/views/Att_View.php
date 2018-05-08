@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Restaurant Map</title>
+  <title>Attractions Map</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,8 +19,8 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 13.288744, lng: 100.927035},
-          zoom: 17,
+          center: {lat: 13.283584, lng: 100.925586},
+          zoom: 14,
           styles: [{
             stylers: [{ visibility: 'simplified' }]
           }, {
@@ -40,7 +41,7 @@
       function performSearch() {
         var request = {
           bounds: map.getBounds(),
-          keyword: 'attractions'
+          keyword: 'สถานที่ท่องเที่ยว'
         };
         service.radarSearch(request, callback);
       }
@@ -60,7 +61,7 @@
           map: map,
           position: place.geometry.location,
           icon: {
-            url: 'http://teamyakima.com/files/2018/02/restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle.png?&a=t',
+            url: 'http://shel-haven.com/wp-content/uploads/2014/06/SH-ICON-LocalAttraction.png',
             anchor: new google.maps.Point(30, 30),
             scaledSize: new google.maps.Size(30, 30)
           }
@@ -118,6 +119,11 @@
   </style>
 </head>
 <body>
+  <?php
+  $url = 'http://13.229.122.182/API/CommentAtt';
+  $book_json = file_get_contents($url);
+  $book_array = json_decode($book_json, true);
+  ?>
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -141,25 +147,40 @@
     </div>
   </nav>
   
-  <div class="container-fluid text-center"> 
+  <div class="container-fluid"> 
     <div class="row content">
       <div id="map"></div>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtnuW7FQshVbrqWiCHNszEDi5F5I4h1eM&callback=initMap&libraries=places,visualization" async defer></script>
     </div>
   </div>
-  <div class="container-fluid text-center"> 
+  <div class="container-fluid"> 
     <div class="row content">
       <div class="col-sm-2">
       </div>
       <div class="col-sm-8">
-        <h1>Restaurant</h1>
+        <h1>สถานที่ท่องเที่ยว</h1>
+        <?php foreach ($book_array['comment'] as $row) { ?>
+        <p><b>Comment : </b></p><p><?php echo $row['Com_detail']; ?></p><br>
+        <p>Name : </p><p><?php echo $row['Com_name']; ?></p><br>
+        <p>-----------------------------------------------------------------------------------------</p><br>
+        <?php } ?>
+        <form class="w3-container w3-card-4 w3-light-grey" action="" method="post">
+          <h2>เขียนแนะนำสถานที่ท่องเที่ยวที่บางแสน</h2>
+          <p><label>Comment</label>
+            <input class="w3-input w3-border"  name="comment" type="text"></p>
+
+            <p><label>Name</label>
+              <input class="w3-input w3-border" name="name" type="text"></p>
+              <p><button class="w3-button w3-white w3-border">Comment</button></p>
+
+            </form>
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
       </div>
-      <div class="col-sm-2">
-      </div>
-    </div>
-  </div>
 
 
-</body>
-</html>
+    </body>
+    </html>
 

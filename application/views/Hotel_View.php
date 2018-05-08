@@ -141,6 +141,11 @@
       </div>
     </div>
   </nav>
+  <?php
+  $url = 'http://13.229.122.182/API/Comment';
+  $book_json = file_get_contents($url);
+  $book_array = json_decode($book_json, true);
+  ?>
   
   <div class="container-fluid"> 
     <div class="row content">
@@ -154,14 +159,15 @@
       </div>
       <div class="col-sm-8">
         <h1>แนะนำที่พักแถวบางแสน</h1>
-        <p>คอมเม้น</p><br>
-        <p>คอมเม้น</p><br>
+        <?php foreach ($book_array['comment'] as $row) { ?>
+        <p><b>Comment : </b></p><p><?php echo $row['Com_detail']; ?></p><br>
+        <p>Name : </p><p><?php echo $row['Com_name']; ?></p><br>
         <p>-----------------------------------------------------------------------------------------</p><br>
-        <form class="w3-container w3-card-4 w3-light-grey">
+        <?php } ?>
+        <form class="w3-container w3-card-4 w3-light-grey" action="<?php base_url();?>/API/addCommentHotel" method="post">
           <h2>เขียนแนะนำสถานที่</h2>
           <p><label>Comment</label>
             <input class="w3-input w3-border"  name="comment" type="text"></p>
-
             <p><label>Name</label>
               <input class="w3-input w3-border" name="name" type="text"></p>
             <p><button class="w3-button w3-white w3-border">Comment</button></p>

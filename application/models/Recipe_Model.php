@@ -10,5 +10,26 @@ class Recipe_Model extends CI_Model {
 		$this->db->insert('recipe', $data);
 
 	}
+	public function Get_All_Comment(){
+		$result = $this->db->get('Comment');
+		return $result->result_array();
+	}
+	public function Get_All_Res(){
+		$result = $this->db->get('Comment_Res');
+		return $result->result_array();
+	}
+	public function Get_All_Att(){
+		$result = $this->db->get('Comment_Att');
+		return $result->result_array();
+	}
+	public function Insert_Comment_Hotel($data){
+		$this->db->insert('Comment', $data);
+	}
+	public function Insert_Comment_Res(){
+		$this->db->insert('Comment_Att', $data);
+	}
+	public function Insert_Comment_Att(){
+		$this->db->insert('Comment_Res', $data);
+	}
 	
 }

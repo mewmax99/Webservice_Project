@@ -85,19 +85,29 @@
         <table>
 
          <tr>
-           <td><img src="data:image;base64,<?php echo $row['re_image']; ?>" height="200" width="200" ></td>
+           <td colspan="3"><img src="data:image;base64,<?php echo $row['re_image']; ?>" height="300" width="400" ></td>
          </tr>
          <tr>
-           <td><?php echo $row['re_name']; ?></td>
+           <td><br></td>
          </tr>
          <tr>
-          <td><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">วิธีทำ</p></td>
+           <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;"><?php echo $row['re_name']; ?></p></b></td>
+         </tr>
+         <tr>
+          <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">ส่วนผสม</p></b></td>
         </tr>
         <tr>
           <td><?php echo $row['re_ingre']; ?></td>
+          
+        </tr>
+        <tr>
+          <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">วิธีทำ</p></b></td>
+        </tr>
+        <tr>
           <td><?php echo $row['re_solu']; ?></td>
         </tr>
       </table>
+      <p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
       <?php } ?>
     </div>
     <div class="col-sm-2">

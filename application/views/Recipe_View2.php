@@ -69,38 +69,43 @@
       </div>
     </div>
   </nav>
+  <?php
+  $url = 'http://13.229.122.182/API/Recipe';
+  $book_json = file_get_contents($url);
+  $book_array = json_decode($book_json, true);
+  ?>
   <div class="container-fluid">    
     <div class="row content">
       <div class="col-sm-2">
         <h1>Dsdf</h1>
       </div>
       <div class="col-sm-8">
-          <p style="font-family:Arial, Verdana, sans-serif; font-size:50px;">สูตรอาหาร</p><br />
-          <?php foreach ($recipe as $row) { ?>
-          <table>
+        <p style="font-family:Arial, Verdana, sans-serif; font-size:50px;">สูตรอาหาร</p><br />
+        <?php foreach ($book_array['recipe'] as $row) { ?>
+        <table>
 
-           <tr>
-             <td><img src="data:image;base64,<?php echo $row['re_image']; ?>" height="200" width="200" ></td>
-           </tr>
-           <tr>
-             <td><?php echo $row['re_name']; ?></td>
-           </tr>
-           <tr>
-            <td><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">วิธีทำ</p></td>
-           </tr>
-           <tr>
-            <td><?php echo $row['re_ingre']; ?></td>
-             <td><?php echo $row['re_solu']; ?></td>
-           </tr>
-         </table>
-         <?php } ?>
-     </div>
-     <div class="col-sm-2">
+         <tr>
+           <td><img src="data:image;base64,<?php echo $row['re_image']; ?>" height="200" width="200" ></td>
+         </tr>
+         <tr>
+           <td><?php echo $row['re_name']; ?></td>
+         </tr>
+         <tr>
+          <td><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">วิธีทำ</p></td>
+        </tr>
+        <tr>
+          <td><?php echo $row['re_ingre']; ?></td>
+          <td><?php echo $row['re_solu']; ?></td>
+        </tr>
+      </table>
+      <?php } ?>
+    </div>
+    <div class="col-sm-2">
       <h1>Batty</h1>
-     </div>
+    </div>
 
-   </div>
- </div>
+  </div>
+</div>
 
 
 

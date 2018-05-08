@@ -59,7 +59,7 @@
         <li><a href="<?php base_url();?>/Barry/Coppy">Hotel</a></li>
         <li><a href="<?php base_url();?>/Barry/Restaurant_View">Restaurant</a></li>
         <li><a href="<?php base_url();?>/Barry/Attractions_View">Attractions</a></li>
-        <li><a href="<?php base_url();?>/API/Get_Recipe">Recipe</a></li>
+        <li><a href="<?php base_url();?>/Barry/Recipe2">Recipe</a></li>
         <!-- <li><a href="<?php base_url();?>/Barry/Recipe">Recipe</a></li> -->
         <li><a href="<?php base_url();?>/Barry/Upload_V">Upload</a></li>
       </ul>

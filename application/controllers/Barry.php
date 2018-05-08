@@ -43,4 +43,7 @@ class Barry extends CI_Controller {
 	public function Upload_V(){
 		$this->load->view('Upload_View');
 	}
+	public function Recipe2(){
+		$this->load->view('Recipe_View');
+	}
 }

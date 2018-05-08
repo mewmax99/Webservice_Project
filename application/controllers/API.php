@@ -1,9 +1,9 @@
 <?php
 
 require(APPPATH.'/libraries/REST_Controller.php');
- 
+
 class API extends REST_Controller{
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -14,10 +14,17 @@ class API extends REST_Controller{
 
     //API - client sends isbn and on valid isbn book information is sent back
 
-    public function Get_Recipe(){
-        
-        $data['recipe'] = $this->Recipe_Model->Recipe_Data();
-        $this->load->view('Recipe_View',$data);
+    public function Recipe_get(){
+        //$this->load->view('Recipe_View',$data);
+        $result['recipe'] = $this->Recipe_Model->Recipe_Data();
+        if($result){
+            $this->response($result, 200);
+        } 
+        else{
+
+            $this->response("No record found", 404);
+
+        }
     }
 
 
@@ -43,135 +50,135 @@ class API extends REST_Controller{
         } 
         else{
 
-             $this->response("Invalid ISBN", 404);
+           $this->response("Invalid ISBN", 404);
 
-            exit;
-        }
-    } 
+           exit;
+       }
+   } 
 
     //API -  Fetch All books
-    function books_get(){
+   function books_get(){
 
-        $result = $this->Book_model->getallbooks();
+    $result = $this->Book_model->getallbooks();
 
-        if($result){
+    if($result){
 
-            $this->response($result, 200); 
+        $this->response($result, 200); 
 
-        } 
+    } 
 
-        else{
+    else{
 
-            $this->response("No record found", 404);
+        $this->response("No record found", 404);
 
-        }
     }
-     
+}
+
     //API - create a new book item in database.
-    function addBook_post(){
-         $name      = $this->post('name');
+function addBook_post(){
+   $name      = $this->post('name');
 
-         $price     = $this->post('price');
+   $price     = $this->post('price');
 
-         $author    = $this->post('author');
+   $author    = $this->post('author');
 
-         $category  = $this->post('category');
+   $category  = $this->post('category');
 
-         $language  = $this->post('language');
+   $language  = $this->post('language');
 
-         $isbn      = $this->post('isbn');
+   $isbn      = $this->post('isbn');
 
-         $pub_date  = $this->post('publish_date');
-        
-         if(!$name || !$price || !$author || !$price || !$isbn || !$category){
+   $pub_date  = $this->post('publish_date');
 
-                $this->response("Enter complete book information to save", 400);
+   if(!$name || !$price || !$author || !$price || !$isbn || !$category){
 
-         }else{
+    $this->response("Enter complete book information to save", 400);
 
-            $result = $this->book_model->add(array("name"=>$name, "price"=>$price, "author"=>$author, "category"=>$category, "language"=>$language, "isbn"=>$isbn, "publish_date"=>$pub_date));
+}else{
 
-            if($result === 0){
+    $result = $this->book_model->add(array("name"=>$name, "price"=>$price, "author"=>$author, "category"=>$category, "language"=>$language, "isbn"=>$isbn, "publish_date"=>$pub_date));
 
-                $this->response("Book information coild not be saved. Try again.", 404);
+    if($result === 0){
 
-            }else{
+        $this->response("Book information coild not be saved. Try again.", 404);
 
-                $this->response("success", 200);  
-           
-            }
+    }else{
 
-        }
+        $this->response("success", 200);  
 
     }
 
-    
+}
+
+}
+
+
     //API - update a book 
-    function updateBook_put(){
-         
-         $name      = $this->put('name');
+function updateBook_put(){
 
-         $price     = $this->put('price');
+   $name      = $this->put('name');
 
-         $author    = $this->put('author');
+   $price     = $this->put('price');
 
-         $category  = $this->put('category');
+   $author    = $this->put('author');
 
-         $language  = $this->put('language');
+   $category  = $this->put('category');
 
-         $isbn      = $this->put('isbn');
+   $language  = $this->put('language');
 
-         $pub_date  = $this->put('publish_date');
+   $isbn      = $this->put('isbn');
 
-         $id        = $this->put('id');
-         
-         if(!$name || !$price || !$author || !$price || !$isbn || !$category){
+   $pub_date  = $this->put('publish_date');
 
-                $this->response("Enter complete book information to save", 400);
+   $id        = $this->put('id');
 
-         }else{
-            $result = $this->book_model->update($id, array("name"=>$name, "price"=>$price, "author"=>$author, "category"=>$category, "language"=>$language, "isbn"=>$isbn, "publish_date"=>$pub_date));
+   if(!$name || !$price || !$author || !$price || !$isbn || !$category){
 
-            if($result === 0){
+    $this->response("Enter complete book information to save", 400);
 
-                $this->response("Book information coild not be saved. Try again.", 404);
+}else{
+    $result = $this->book_model->update($id, array("name"=>$name, "price"=>$price, "author"=>$author, "category"=>$category, "language"=>$language, "isbn"=>$isbn, "publish_date"=>$pub_date));
 
-            }else{
+    if($result === 0){
 
-                $this->response("success", 200);  
+        $this->response("Book information coild not be saved. Try again.", 404);
 
-            }
+    }else{
 
-        }
+        $this->response("success", 200);  
 
     }
+
+}
+
+}
 
     //API - delete a book 
-    function deleteBook_delete()
-    {
+function deleteBook_delete()
+{
 
-        $id  = $this->delete('id');
+    $id  = $this->delete('id');
 
-        if(!$id){
+    if(!$id){
 
-            $this->response("Parameter missing", 404);
-
-        }
-         
-        if($this->book_model->delete($id))
-        {
-
-            $this->response("Success", 200);
-
-        } 
-        else
-        {
-
-            $this->response("Failed", 400);
-
-        }
+        $this->response("Parameter missing", 404);
 
     }
+
+    if($this->book_model->delete($id))
+    {
+
+        $this->response("Success", 200);
+
+    } 
+    else
+    {
+
+        $this->response("Failed", 400);
+
+    }
+
+}
 
 
 }

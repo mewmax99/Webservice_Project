@@ -9,9 +9,19 @@ class API extends REST_Controller{
         parent::__construct();
 
         $this->load->model('Book_model');
+        $this->load->model('Recipe_Model');
     }
 
     //API - client sends isbn and on valid isbn book information is sent back
+
+    public function Get_Recipe(){
+        
+        $data['recipe'] = $this->Recipe_Model->Recipe_Data();
+        $this->load->view('Recipe_View',$data);
+    }
+
+
+
     function bookByIsbn_get(){
 
         $isbn  = $this->get('isbn');

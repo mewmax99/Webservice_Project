@@ -40,7 +40,7 @@
       function performSearch() {
         var request = {
           bounds: map.getBounds(),
-          keyword: 'Restaurant'
+          keyword: 'attractions'
         };
         service.radarSearch(request, callback);
       }
@@ -60,7 +60,7 @@
           map: map,
           position: place.geometry.location,
           icon: {
-            url: 'https://www.freeiconspng.com/uploads/pink-restaurants-icon-19.png',
+            url: 'http://teamyakima.com/files/2018/02/restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle.png?&a=t',
             anchor: new google.maps.Point(30, 30),
             scaledSize: new google.maps.Size(30, 30)
           }

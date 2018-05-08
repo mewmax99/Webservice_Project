@@ -57,9 +57,11 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="<?php base_url();?>/Barry/Coppy">Hotel</a></li>
-        <li><a href="#">Restaurant</a></li>
-        <li><a href="#">Attractions</a></li>
-        <li><a href="#">Recipe</a></li>
+        <li><a href="<?php base_url();?>/Barry/Restaurant_View">Restaurant</a></li>
+        <li><a href="<?php base_url();?>/Barry/Attractions_View">Attractions</a></li>
+        <li><a href="<?php base_url();?>/API/Get_Recipe">Recipe</a></li>
+        <!-- <li><a href="<?php base_url();?>/Barry/Recipe">Recipe</a></li> -->
+        <li><a href="<?php base_url();?>/Barry/Upload_V">Upload</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

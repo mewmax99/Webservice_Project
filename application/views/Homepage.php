@@ -61,7 +61,7 @@
         <li><a href="<?php base_url();?>/Barry/Attractions_View">Attractions</a></li>
         <li><a href="<?php base_url();?>/Barry/Recipe2">Recipe</a></li>
         <!-- <li><a href="<?php base_url();?>/Barry/Recipe">Recipe</a></li> -->
-        <li><a href="<?php base_url();?>/Barry/Upload_V">Upload</a></li>
+        <!-- <li><a href="<?php base_url();?>/Barry/Upload_V">Upload</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

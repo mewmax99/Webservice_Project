@@ -69,7 +69,7 @@ class API extends REST_Controller{
         $name = $this->input->post('name');
         $comment = $this->input->post('comment');
         if(!$name || !$comment){
-            $this->response("Enter complete book information to save", 400);
+            $this->response("Enter Comment or name to save", 400);
             //redirect('Barry/Coppy','refresh');
         }else{
             $data = array(
@@ -87,12 +87,46 @@ class API extends REST_Controller{
     }
 
     public function addCommentAtt_post(){
-
+        $name = $this->input->post('name');
+        $comment = $this->input->post('comment');
+        if(!$name || !$comment){
+            $this->response("Enter Comment or name to save", 400);
+            //redirect('Barry/Coppy','refresh');
+        }else{
+            $data = array(
+                'Com_name' => $this->input->post('name'),
+                'Com_detail' => $this->input->post('comment')
+            );
+            $result = $this->Recipe_Model->Insert_Comment_Att($data);
+            if($result === 0){
+                $this->response("Book information coild not be saved. Try again.", 404);
+            }else{
+                //$this->response("success", 200);
+                redirect('Barry/Attractions_View','refresh');
+            }
+        }    
 
     }
 
     public function addCommentRes_post(){
-
+        $name = $this->input->post('name');
+        $comment = $this->input->post('comment');
+        if(!$name || !$comment){
+            $this->response("Enter Comment or name to save", 400);
+            //redirect('Barry/Coppy','refresh');
+        }else{
+            $data = array(
+                'Com_name' => $this->input->post('name'),
+                'Com_detail' => $this->input->post('comment')
+            );
+            $result = $this->Recipe_Model->Insert_Comment_Res($data);
+            if($result === 0){
+                $this->response("Book information coild not be saved. Try again.", 404);
+            }else{
+                $this->response("success", 200);
+                //redirect('Barry/Restaurant_View','refresh');
+            }
+        }    
 
     }
 

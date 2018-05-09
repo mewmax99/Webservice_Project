@@ -133,15 +133,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="#">ของดีบางแสน</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="<?php base_url();?>/Barry">Home</a></li>
-          <li><a href="#">Hotel</a></li>
-          <li><a href="#">Restaurant</a></li>
-          <li><a href="#">Attractions</a></li>
-          <li><a href="#">Recipe</a></li>
+          <li><a href="<?php base_url();?>/Barry">Home</a></li>
+          <li><a href="<?php base_url();?>/Barry/Coppy">Hotel</a></li>
+          <li><a href="<?php base_url();?>/Barry/Restaurant_View">Restaurant</a></li>
+          <li class="active"><a href="<?php base_url();?>/Barry/Attractions_View">Attractions</a></li>
+          <li><a href="<?php base_url();?>/Barry/Recipe2">Recipe</a></li>
         </ul>
       </div>
     </div>
@@ -160,11 +160,11 @@
       <div class="col-sm-8">
         <h1>สถานที่ท่องเที่ยว</h1>
         <?php foreach ($book_array['comment'] as $row) { ?>
-        <p><b>Comment : </b></p><p><?php echo $row['Com_detail']; ?></p><br>
-        <p>Name : </p><p><?php echo $row['Com_name']; ?></p><br>
-        <p>-----------------------------------------------------------------------------------------</p><br>
+        <p><b>Comment : </b><?php echo $row['Com_detail']; ?></p>
+        <p><b>Name : <?php echo $row['Com_name']; ?></b></p>
+        <hr>
         <?php } ?>
-        <form class="w3-container w3-card-4 w3-light-grey" action="" method="post">
+        <form class="w3-container w3-card-4 w3-light-grey" action="<?php base_url();?>/API/addCommentAtt" method="post">
           <h2>เขียนแนะนำสถานที่ท่องเที่ยวที่บางแสน</h2>
           <p><label>Comment</label>
             <input class="w3-input w3-border"  name="comment" type="text"></p>

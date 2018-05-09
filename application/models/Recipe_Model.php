@@ -25,11 +25,11 @@ class Recipe_Model extends CI_Model {
 	public function Insert_Comment_Hotel($data){
 		$this->db->insert('Comment', $data);
 	}
-	public function Insert_Comment_Res(){
-		$this->db->insert('Comment_Att', $data);
-	}
-	public function Insert_Comment_Att(){
+	public function Insert_Comment_Res($data){
 		$this->db->insert('Comment_Res', $data);
+	}
+	public function Insert_Comment_Att($data){
+		$this->db->insert('Comment_Att', $data);
 	}
 	
 }

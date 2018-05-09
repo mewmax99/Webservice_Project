@@ -128,58 +128,58 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="#">ของดีบางแสน</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="<?php base_url();?>/Barry">Home</a></li>
-          <li><a href="#">Hotel</a></li>
-          <li><a href="#">Restaurant</a></li>
-          <li><a href="#">Attractions</a></li>
-          <li><a href="#">Recipe</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <?php
-  $url = 'http://13.229.122.182/API/Comment';
-  $book_json = file_get_contents($url);
-  $book_array = json_decode($book_json, true);
-  ?>
-  
-  <div class="container-fluid"> 
-    <div class="row content">
-      <div id="map"></div>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtnuW7FQshVbrqWiCHNszEDi5F5I4h1eM&callback=initMap&libraries=places,visualization" async defer></script>
-    </div>
+         <li ><a href="<?php base_url();?>/Barry">Home</a></li>
+         <li class="active"><a href="<?php base_url();?>/Barry/Coppy">Hotel</a></li>
+         <li><a href="<?php base_url();?>/Barry/Restaurant_View">Restaurant</a></li>
+         <li><a href="<?php base_url();?>/Barry/Attractions_View">Attractions</a></li>
+         <li><a href="<?php base_url();?>/Barry/Recipe2">Recipe</a></li>
+       </ul>
+     </div>
+   </div>
+ </nav>
+ <?php
+ $url = 'http://13.229.122.182/API/Comment';
+ $book_json = file_get_contents($url);
+ $book_array = json_decode($book_json, true);
+ ?>
+
+ <div class="container-fluid"> 
+  <div class="row content">
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtnuW7FQshVbrqWiCHNszEDi5F5I4h1eM&callback=initMap&libraries=places,visualization" async defer></script>
   </div>
-  <div class="container-fluid"> 
-    <div class="row content">
-      <div class="col-sm-2">
-      </div>
-      <div class="col-sm-8">
-        <h1>แนะนำที่พักแถวบางแสน</h1>
-        <?php foreach ($book_array['comment'] as $row) { ?>
-        <p><b>Comment : </b></p><p><?php echo $row['Com_detail']; ?></p><br>
-        <p>Name : </p><p><?php echo $row['Com_name']; ?></p><br>
-        <p>-----------------------------------------------------------------------------------------</p><br>
-        <?php } ?>
-        <form class="w3-container w3-card-4 w3-light-grey" action="<?php base_url();?>/API/addCommentHotel" method="post">
-          <h2>เขียนแนะนำสถานที่</h2>
-          <p><label>Comment</label>
-            <input class="w3-input w3-border"  name="comment" type="text"></p>
-            <p><label>Name</label>
-              <input class="w3-input w3-border" name="name" type="text"></p>
+</div>
+<div class="container-fluid"> 
+  <div class="row content">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
+      <h1>แนะนำที่พักแถวบางแสน</h1>
+      <?php foreach ($book_array['comment'] as $row) { ?>
+      <p><b>Comment : </b><?php echo $row['Com_detail']; ?></p>
+        <p><b>Name : <?php echo $row['Com_name']; ?></b></p>
+      <hr>
+      <?php } ?>
+      <form class="w3-container w3-card-4 w3-light-grey" action="<?php base_url();?>/API/addCommentHotel" method="post">
+        <h2>เขียนแนะนำสถานที่</h2>
+        <p><label>Comment</label>
+          <input class="w3-input w3-border"  name="comment" type="text"></p>
+          <p><label>Name</label>
+            <input class="w3-input w3-border" name="name" type="text"></p>
             <p><button class="w3-button w3-white w3-border">Comment</button></p>
-           
-        </form>
+
+          </form>
         </div>
-      <div class="col-sm-2">
+        <div class="col-sm-2">
+        </div>
       </div>
     </div>
-  </div>
 
 
-    </body>
-    </html>
+  </body>
+  </html>
 

@@ -53,68 +53,68 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="#">ของดีบางแสน</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="<?php base_url();?>/Barry/Coppy">Hotel</a></li>
-          <li><a href="<?php base_url();?>/Barry/Restaurant_View">Restaurant</a></li>
-          <li><a href="<?php base_url();?>/Barry/Attractions_View">Attractions</a></li>
-          <li><a href="#">Recipe</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-      </div>
+         <li><a href="<?php base_url();?>/Barry">Home</a></li>
+         <li><a href="<?php base_url();?>/Barry/Coppy">Hotel</a></li>
+         <li><a href="<?php base_url();?>/Barry/Restaurant_View">Restaurant</a></li>
+         <li><a href="<?php base_url();?>/Barry/Attractions_View">Attractions</a></li>
+         <li class="active"><a href="<?php base_url();?>/Barry/Recipe2">Recipe</a></li>
+       </ul>
+       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
     </div>
-  </nav>
-  <?php
-  $url = 'http://13.229.122.182/API/Recipe';
-  $book_json = file_get_contents($url);
-  $book_array = json_decode($book_json, true);
-  ?>
-  <div class="container-fluid">    
-    <div class="row content">
-      <div class="col-sm-2">
-        <h1>Dsdf</h1>
-      </div>
-      <div class="col-sm-8">
-        <p style="font-family:Arial, Verdana, sans-serif; font-size:50px;">สูตรอาหาร</p><br />
-        <?php foreach ($book_array['recipe'] as $row) { ?>
-        <table>
-
-         <tr>
-           <td colspan="3"><img src="data:image;base64,<?php echo $row['re_image']; ?>" height="300" width="400" ></td>
-         </tr>
-         <tr>
-           <td><br></td>
-         </tr>
-         <tr>
-           <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;"><?php echo $row['re_name']; ?></p></b></td>
-         </tr>
-         <tr>
-          <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">ส่วนผสม</p></b></td>
-        </tr>
-        <tr>
-          <td><?php echo $row['re_ingre']; ?></td>
-          
-        </tr>
-        <tr>
-          <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">วิธีทำ</p></b></td>
-        </tr>
-        <tr>
-          <td><?php echo $row['re_solu']; ?></td>
-        </tr>
-      </table>
-      <p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
-      <?php } ?>
-    </div>
+  </div>
+</nav>
+<?php
+$url = 'http://13.229.122.182/API/Recipe';
+$book_json = file_get_contents($url);
+$book_array = json_decode($book_json, true);
+?>
+<div class="container-fluid">    
+  <div class="row content">
     <div class="col-sm-2">
-      <h1>Batty</h1>
+
     </div>
+    <div class="col-sm-8">
+      <p style="font-family:Arial, Verdana, sans-serif; font-size:50px;">สูตรอาหาร</p><br />
+      <?php foreach ($book_array['recipe'] as $row) { ?>
+      <table>
+
+       <tr>
+         <td colspan="3"><img src="data:image;base64,<?php echo $row['re_image']; ?>" height="300" width="400" ></td>
+       </tr>
+       <tr>
+         <td><br></td>
+       </tr>
+       <tr>
+         <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;"><?php echo $row['re_name']; ?></p></b></td>
+       </tr>
+       <tr>
+        <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">ส่วนผสม</p></b></td>
+      </tr>
+      <tr>
+        <td><?php echo $row['re_ingre']; ?></td>
+
+      </tr>
+      <tr>
+        <td><b><p style="font-family:Arial, Verdana, sans-serif; font-size:25px;">วิธีทำ</p></b></td>
+      </tr>
+      <tr>
+        <td><?php echo $row['re_solu']; ?></td>
+      </tr>
+    </table>
+    <hr>
+    <?php } ?>
+  </div>
+  <div class="col-sm-2">
 
   </div>
+
+</div>
 </div>
 
 
